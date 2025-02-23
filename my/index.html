@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="main.js" charset="utf-8"></script>
+    <title>时间与天气展示</title>
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <div id="time-container">
+        <p id="current-time"></p>
+        <p id="date-info"></p>
+    </div>
+
+    <div id="weather-container">
+        <div class="weather-item">
+            <h3>天气状况</h3>
+            <p id="weather-status">加载中...</p>
+        </div>
+        <div class="weather-item">
+            <h3>温度</h3>
+            <p id="temperature">-</p>
+        </div>
+        <div class="weather-item">
+            <h3>地理位置</h3>
+            <p id="location">-</p>
+        </div>
+        <div class="weather-item">
+            <h3>更新时间</h3>
+            <p id="weather-update-time">-</p>
+        </div>
+    </div>
+
+    <button onclick="showSettings()" style="position: fixed; bottom: 20px; right: 20px;">设置</button>
+
+    <dialog id="settings-dialog">
+        <div>
+            <label>高德API Key: </label>
+            <input type="text" id="api-key-input">
+        </div>
+        <button onclick="saveSettings()">保存</button>
+        <button onclick="document.getElementById('settings-dialog').close()">取消</button>
+    </dialog>
+
+    <script>
+        
+    </script>
+</body>
+
+</html>

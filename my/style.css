@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#time-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#current-time {
+    font-size: 10em;
+    margin: 0;
+}
+
+#date-info {
+    font-size: 3em;
+    color: #000000;
+}
+
+#weather-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 10px;
+}
+
+.weather-item {
+    text-align: center;
+}
+
+#settings-dialog {
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#settings-dialog div {
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 5px 15px;
+    cursor: pointer;
+}
