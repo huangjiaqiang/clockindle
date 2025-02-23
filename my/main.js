@@ -1,19 +1,6 @@
 // 初始化变量
 let weatherUpdateInterval;
-let amapKey = localStorage.getItem('amapKey') || '';
 
-// 设置相关函数
-function showSettings() {
-    document.getElementById('api-key-input').value = amapKey;
-    document.getElementById('settings-dialog').showModal();
-}
-
-function saveSettings() {
-    amapKey = document.getElementById('api-key-input').value.trim();
-    localStorage.setItem('amapKey', amapKey);
-    document.getElementById('settings-dialog').close();
-    updateWeather(); // 立即更新天气
-}
 
 // 在script标签内添加天气Emoji映射
 const weatherEmojiMap = {
@@ -38,14 +25,11 @@ const weatherEmojiMap = {
 
 // 修改后的updateWeather函数
 async function updateWeather() {
-    if (!amapKey) {
-        showApiKeyWarning();
-        return;
-    }
+
 
     try {
         // 添加必要参数（示例使用北京adcode）
-        const response = await fetch(`http://a.niube.top:8080/api/weather?key=${amapKey}&city=350604&extensions=base`);
+        const response = await fetch(`http://a.niube.top:8080/api/weather?city=350604&extensions=base`);
 
         if (!response.ok) {
             throw new Error(`HTTP错误! 状态码: ${response.status}`);
@@ -148,11 +132,7 @@ window.onload = function () {
     setInterval(updateTime, 60000);
     updateTime();
 
-    if (amapKey) {
-        weatherUpdateInterval = setInterval(updateWeather, 60 * 60 * 1000);
+    weatherUpdateInterval = setInterval(updateWeather, 60 * 60 * 1000);
         updateWeather();
-    } else {
-        showApiKeyWarning();
-    }
 
 }
