@@ -25,21 +25,27 @@ const weatherEmojiMap = {
 
 // 修改后的updateWeather函数
 async function updateWeather() {
-
-
     try {
-        // 添加必要参数（示例使用北京adcode）
-        const response = await fetch(`http://a.niube.top:8080/api/weather?city=350604&extensions=base`);
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5秒超时
+        
+        // 添加状态提示
+        document.getElementById('weather-status').textContent = '正在获取天气...';
+        
+        const response = await fetch(`http://a.niube.top:8080/api/weather?city=350604&extensions=base`, {
+            signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
 
         if (!response.ok) {
-            throw new Error(`HTTP错误! 状态码: ${response.status}`);
+            throw new Error(`网络请求失败 (${response.status})`);
         }
 
         const data = await response.json();
 
-        // 检查接口返回状态
         if (data.status !== '1') {
-            throw new Error(`接口错误: ${data.info} (代码: ${data.infocode})`);
+            throw new Error(`天气数据获取失败: ${data.info}`);
         }
 
         // 获取实时天气数据
@@ -59,10 +65,11 @@ async function updateWeather() {
             `${getWeatherEmoji(liveData.weather)} ${liveData.weather}`;
 
     } catch (error) {
-        console.error('天气更新失败:', error);
-        document.getElementById('weather-status').textContent = '更新失败';
+        // 显示具体错误信息到界面上
+        document.getElementById('weather-status').textContent = `获取失败: ${error.message}`;
         document.getElementById('temperature').textContent = '-';
         document.getElementById('location').textContent = '-';
+        document.getElementById('weather-update-time').textContent = '-';
     }
 }
 

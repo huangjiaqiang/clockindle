@@ -25,9 +25,9 @@ body {
 
 #weather-container, #other-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 10px;
     background: #f5f5f5;
     border-radius: 10px;
 }
@@ -61,4 +61,23 @@ button {
     writing-mode: vertical-lr;
     font-size: 0.2em;
     margin-right: 10px;
+}
+
+/* 添加移动设备适配 */
+@media screen and (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    
+    #current-time {
+        font-size: 5em;
+    }
+    
+    #date-info {
+        font-size: 1.5em;
+    }
+    
+    #weather-status, #temperature {
+        font-size: 2.5em;
+    }
 }
