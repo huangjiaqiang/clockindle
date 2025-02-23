@@ -13,6 +13,9 @@ body {
 #current-time {
     font-size: 10em;
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #date-info {
@@ -20,7 +23,7 @@ body {
     color: #000000;
 }
 
-#weather-container {
+#weather-container, #other-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
@@ -31,6 +34,12 @@ body {
 
 .weather-item {
     text-align: center;
+}
+
+/* 增加天气状态和温度的字体大小 */
+#weather-status, #temperature {
+    font-size: 5em;
+    margin: 10px 0;
 }
 
 #settings-dialog {
@@ -46,4 +55,10 @@ body {
 button {
     padding: 5px 15px;
     cursor: pointer;
+}
+
+.period-indicator {
+    writing-mode: vertical-lr;
+    font-size: 0.2em;
+    margin-right: 10px;
 }

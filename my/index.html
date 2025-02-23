@@ -20,13 +20,16 @@
 
     <div id="weather-container">
         <div class="weather-item">
-            <h3>天气状况</h3>
+            <h3 style="display: none;">天气状况</h3>
             <p id="weather-status">加载中...</p>
         </div>
         <div class="weather-item">
-            <h3>温度</h3>
+            <h3 style="display: none;">温度</h3>
             <p id="temperature">-</p>
         </div>
+    </div>
+
+    <div id="other-container">
         <div class="weather-item">
             <h3>地理位置</h3>
             <p id="location">-</p>
@@ -37,16 +40,8 @@
         </div>
     </div>
 
-    <button onclick="showSettings()" style="position: fixed; bottom: 20px; right: 20px;">设置</button>
+    <button onclick="updateWeather()" style="position: fixed; bottom: 20px; right: 20px;">刷新</button>
 
-    <dialog id="settings-dialog">
-        <div>
-            <label>高德API Key: </label>
-            <input type="text" id="api-key-input">
-        </div>
-        <button onclick="saveSettings()">保存</button>
-        <button onclick="document.getElementById('settings-dialog').close()">取消</button>
-    </dialog>
 
     <script>
         
