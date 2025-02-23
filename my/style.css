@@ -13,9 +13,8 @@ body {
 #current-time {
     font-size: 10em;
     margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    line-height: 1.5; /* 替代 flex 布局 */
 }
 
 #date-info {
@@ -24,15 +23,15 @@ body {
 }
 
 #weather-container, #other-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
+    overflow: hidden; /* 清除浮动 */
     padding: 10px;
     background: #f5f5f5;
-    border-radius: 10px;
 }
 
 .weather-item {
+    float: left; /* 替代 grid 布局 */
+    width: 150px;
+    margin: 5px;
     text-align: center;
 }
 
@@ -44,7 +43,6 @@ body {
 
 #settings-dialog {
     padding: 20px;
-    border-radius: 5px;
     border: 1px solid #ccc;
 }
 
@@ -58,26 +56,11 @@ button {
 }
 
 .period-indicator {
-    writing-mode: vertical-lr;
+    display: inline-block;
+    transform: rotate(90deg); /* 替代 writing-mode */
+    transform-origin: left top;
     font-size: 0.2em;
     margin-right: 10px;
 }
 
-/* 添加移动设备适配 */
-@media screen and (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-    
-    #current-time {
-        font-size: 5em;
-    }
-    
-    #date-info {
-        font-size: 1.5em;
-    }
-    
-    #weather-status, #temperature {
-        font-size: 2.5em;
-    }
-}
+/* 移除 @media 查询，或使用 JavaScript 实现响应式设计 */

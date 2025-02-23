@@ -1,0 +1,2 @@
+var weatherUpdateInterval;
+alert('ddd');
